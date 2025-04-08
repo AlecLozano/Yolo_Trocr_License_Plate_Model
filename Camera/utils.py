@@ -58,6 +58,10 @@ def draw_rectangle(image,boxes,labels):
             label = None
 
         x_min, y_min, x_max, y_max = box.tolist()
-        image = cv2.rectangle(image, (x_min,y_max), (x_max,y_min), color=(0,0,255), thickness=2)
-        image = cv2.putText(image, label, (x_min,y_max+25), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+
+        try:
+            image = cv2.rectangle(image, (x_min,y_max), (x_max,y_min), color=(0,0,255), thickness=2)
+            image = cv2.putText(image, label, (x_min,y_max+25), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+        except:
+            return image
     return image
